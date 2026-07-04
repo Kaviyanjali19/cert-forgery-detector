@@ -16,6 +16,15 @@ export default function Results() {
         {state.verdict}
       </div>
       <p className="text-gray-400 mb-8">Confidence: {state.confidence}%</p>
+
+      {state.heatmap && (
+        <div className="mb-8">
+          <h3 className="text-lg font-semibold mb-2">🔥 Forgery Heatmap</h3>
+          <img src={state.heatmap} alt="Heatmap"
+            className="rounded-lg border border-gray-700 max-w-md" />
+        </div>
+      )}
+
       <h3 className="text-lg font-semibold mb-2">Layer Analysis</h3>
       <ResponsiveContainer width="100%" height={300}>
         <RadarChart data={radarData}>
@@ -24,6 +33,7 @@ export default function Results() {
           <Radar dataKey="score" fill="#3b82f6" fillOpacity={0.6} />
         </RadarChart>
       </ResponsiveContainer>
+
       <h3 className="text-lg font-semibold mt-8 mb-2">Explainability</h3>
       {Object.entries(state.explanation).map(([k, v]) => (
         <div key={k} className="bg-gray-800 rounded p-3 mb-2">
