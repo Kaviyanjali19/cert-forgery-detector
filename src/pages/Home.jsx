@@ -12,7 +12,7 @@ export default function Home() {
     setLoading(true)
     const form = new FormData()
     form.append("file", file)
-    const res = await axios.post("http://cert-forgery-backend.onrender.com/api/detect/", form)
+    const res = await axios.post("http://localhost:8000/api/detect/", form)
     navigate("/results", { state: res.data })
     setLoading(false)
   }
